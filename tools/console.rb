@@ -4,21 +4,35 @@ def reload
   load 'config/environment.rb'
 end
 
-house = Listing.new("house")
-apartment = Listing.new("apartment")
-condo = Listing.new("condo")
+#Vacations:
 
-derek = Guest.new("Derek")
-tim = Guest.new("tim")
-jose = Guest.new("jose")
+# house = Listing.new("house")
+# apartment = Listing.new("apartment")
+# condo = Listing.new("condo")
 
-hawaii = Trip.new("hawaii", house, derek)
-california = Trip.new("california", apartment, tim)
-seattle = Trip.new("seattle", condo, jose)
-deleware = Trip.new("deleware", house, tim)
+# derek = Guest.new("Derek")
+# tim = Guest.new("tim")
+# jose = Guest.new("jose")
 
-# binding.pry 
-# puts 'hey'
+# hawaii = Trip.new("hawaii", house, derek)
+# california = Trip.new("california", apartment, tim)
+# seattle = Trip.new("seattle", condo, jose)
+# deleware = Trip.new("deleware", house, tim)
+
+
+#Bakery:
+
+french_bakery = Bakery.new("French Bakery")
+english_bakery = Bakery.new("English Bakery")
+
+cake = Dessert.new("Cake", french_bakery)
+brownie = Dessert.new("Brownie", english_bakery)
+
+sugar = Ingredient.new("Sugar", 100, french_bakery, cake)
+flour = Ingredient.new("Flour", 250, english_bakery, brownie)
+vanilla = Ingredient.new("Vanilla", 50, french_bakery, cake)
+brown_suger = Ingredient.new("Brown Sugar", 50, english_bakery, brownie)
+
 
 Pry.start
 
