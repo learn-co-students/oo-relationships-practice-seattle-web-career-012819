@@ -1,8 +1,8 @@
 class Passenger
     @@all = []
-    attr_accessor :name
-
-    def initialize(name)
+    attr_reader :name
+    
+    def initialize(name: '')
         @name = name
         @@all << self
     end
@@ -12,19 +12,21 @@ class Passenger
     end
 
     def drivers
-        self.rides.map {|ride| ride.driver}
+        self.rides.map do |ride|
+            ride.driver
+        end
     end
 
     def total_distance
-        distance = 0
+        total = 0
         self.rides.each do |ride|
-            distance += ride.distance
+            total += ride.distance
         end
-        distance
+        total
     end
 
     def self.premium_members
-        Passenger.all.select {|passenger| passenger.total_distance >= 100}
+        self.all.select {|passenger| passenger.total_distance > 100}
     end
 
     def self.all

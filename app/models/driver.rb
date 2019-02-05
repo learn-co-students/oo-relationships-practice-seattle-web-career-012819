@@ -1,8 +1,8 @@
 class Driver
     @@all = []
-    attr_accessor :name
+    attr_reader :name
 
-    def initialize(name)
+    def initialize(name: '')
         @name = name
         @@all << self
     end
@@ -16,15 +16,15 @@ class Driver
     end
 
     def total_distance
-        distance = 0
+        total = 0
         self.rides.each do |ride|
-            distance += ride.distance
+            total += ride.distance
         end
-        distance
+        total
     end
 
     def self.mileage_cap(distance)
-        Driver.all.select {|driver| driver.total_distance > distance}
+        self.all.select {|driver| driver.total_distance > distance}
     end
 
     def self.all

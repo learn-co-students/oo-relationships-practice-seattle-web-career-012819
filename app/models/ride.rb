@@ -1,22 +1,22 @@
 class Ride
     @@all = []
-    attr_accessor :distance, :driver, :passenger
+    attr_reader :driver, :passenger, :distance
 
-    def initialize(distance, driver, passenger)
-        @distance = distance
+    def initialize(driver: nil, passenger: nil, distance: 0)
         @driver = driver
         @passenger = passenger
+        @distance = distance
         @@all << self
     end
 
     def self.average_distance
         total_distance = 0
         total_rides = 0
-        Ride.all.each do |ride|
-           total_distance += ride.distance
-           total_rides += 1
+        self.all.each do |ride|
+            total_distance += ride.distance
+            total_rides += 1
         end
-        total_distance.to_f / total_rides
+        total_distance / total_rides
     end
 
     def self.all
