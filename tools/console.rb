@@ -111,4 +111,30 @@ end
 # lc5 = LocationCard.new(contract5, l1)
 # end
 
+
+# def crowdfunding
+
+ user1 = User.new("Scott")
+ user2 = User.new("Billy")
+ user3 = User.new("Tiffany")
+ user4 = User.new("Kevin")
+ user5 = User.new("Steve")
+ user6 = User.new("Bob")
+ user7 = User.new("Sarah")
+
+
+ project1 = Project.new("Gym", 100000, user1)
+ project2 = Project.new("Bakery", 20000, user6)
+ project3 = Project.new("Lyft", 8000, user7)
+ project4 = Project.new("imdb", 200000, user5)
+
+ pledge1 = Pledge.new(project1,user1,20000)
+ pledge2 = Pledge.new(project2,user2,18000)
+ pledge3 = Pledge.new(project2,user3,4000)
+ pledge4 = Pledge.new(project1,user3,4000)
+ pledge5 = Pledge.new(project3,user1,6000)
+
+
+
+# end
 Pry.start
