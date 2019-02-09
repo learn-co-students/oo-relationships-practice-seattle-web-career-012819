@@ -10,11 +10,16 @@ class Passenger
   end
 
   def drivers
-    driver_array = []
-    Ride.all.each do |find_driver|
-      driver_array  << find_driver.driver
+    # driver_array = []
+    # Ride.all.each do |find_driver|
+    #   if find_driver.passenger == self
+    #     driver_array  << find_driver.driver
+    #   end
+    # end
+    # return driver_array
+    self.rides.map do |drive|
+      drive.driver
     end
-    return driver_array
   end
 
   def rides
@@ -23,23 +28,26 @@ class Passenger
       #passenger_array << all_passenger.passenger
       all_passenger.passenger == self
     end
-
     #return passenger_array
   end
 
   def total_distance
     total_=0
     Ride.all.each do |total|
-      total_ += total.distance
+      if total.passenger == self
+          total_ += total.distance
+      end
     end
     total_
   end
 
   def self.premium_members
-    Ride.all.map do |miles|
+    passenger_array = []
+    Ride.all.each do |miles|
       if miles.distance > 100
-        miles.passenger
+        passenger_array << miles.passenger
       end
     end
+    passenger_array
   end
 end

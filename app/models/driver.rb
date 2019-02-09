@@ -5,33 +5,30 @@ class Driver
     @name = name
     @@all << self
   end
+
   def self.all
     @@all
   end
-def passengers
-  Ride.all.map do |all_passenger|
-    all_passenger.passenger
+
+  def passengers
+    self.rides.map do |pass|
+      pass.passenger
+    end
   end
 
-end
-
-   def rides #(driver_rides)
-     #return driver_rides
-     @@all << Ride.all
-     # count =0
-     # Ride.all.each do |all_drivers|
-     #  count += 1
-     # end
-     # return "#{self} #{count} trips"
+   def rides
+     Ride.all.select do |drive|
+       drive.driver == self
+     end
    end
 
    def self.mileage_cap(distance)
-     driver_array = []
-      Ride.all.map do |trips|
-        if trips.distance > distance
-          driver_array << trips.driver
-        end
+    driver_array = []
+    Ride.all.each do |find_distance|
+      if find_distance.distance > distance
+        driver_array << find_distance.driver
       end
-      driver_array
+    end
+    driver_array
    end
 end
