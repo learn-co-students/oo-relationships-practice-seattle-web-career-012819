@@ -1,3 +1,4 @@
+#Lyft exercises file
 class Passenger
   attr_reader :name
   @@all = []

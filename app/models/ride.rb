@@ -1,3 +1,4 @@
+#Lyft exercises file
 class Ride
   attr_accessor :driver, :passenger, :distance
   @@all =[]
